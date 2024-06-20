@@ -6,8 +6,10 @@ function initializeSocket(server) {
   io.on('connection', (socket) => {
     console.log('A user connected');
 
-    socket.on('userid', (data) => {
+    socket.on('send_message', (data) => {
       console.log('Received message:', data);
+
+        socket.emit('Send Message', data)
     });
 
     socket.on('disconnect', () => {
